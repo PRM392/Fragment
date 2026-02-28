@@ -9,31 +9,38 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.fragment.databinding.FragmentGuideHomeBinding;
+import com.example.fragment.ui.SharedViewModel;
 
 public class HomeFragment extends Fragment {
-    
+
     private HomeViewModel viewModel;
+    private SharedViewModel sharedViewModel; // ViewModel dùng chung
     private FragmentGuideHomeBinding binding;
-    
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
     }
-    
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentGuideHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-    
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Initialize UI and observe ViewModel
+
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+        sharedViewModel.getCounter().observe(getViewLifecycleOwner(), currentCount -> {
+            binding.tvCounterResult.setText("Số lần bấm bên Dashboard: " + currentCount);
+        });
     }
-    
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
