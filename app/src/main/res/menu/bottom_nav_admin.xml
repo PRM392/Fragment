@@ -16,4 +16,9 @@
         android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="@string/title_user_management" />
 
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Home Fragment" />
+
 </menu>
