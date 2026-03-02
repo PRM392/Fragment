@@ -10,13 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.fragment.R;
 import com.example.fragment.databinding.FragmentDashboardBinding;
 import com.example.fragment.ui.SharedViewModel;
 
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel viewModel;        // ViewModel dùng riêng cho Fragment này
-    private SharedViewModel sharedViewModel;     // ViewModel dùng chung
+    private DashboardViewModel viewModel; // ViewModel dùng riêng cho Fragment này
+    private SharedViewModel sharedViewModel; // ViewModel dùng chung
     private FragmentDashboardBinding binding;
 
     @Override
@@ -27,7 +29,8 @@ public class DashboardFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -38,9 +41,19 @@ public class DashboardFragment extends Fragment {
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
+        // Lắng nghe biến đếm để cập nhật UI ngay tại Dashboard
+        sharedViewModel.getCounter().observe(getViewLifecycleOwner(), count -> {
+            binding.tvCounterDashboard.setText("Số lần đã bấm: " + count);
+        });
+
         binding.btnSend.setOnClickListener(v -> {
             sharedViewModel.incrementCounter(); // Gọi hàm tăng biến đếm
-            Toast.makeText(getContext(), "Đã gửi dữ liệu sang màn hình khác!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Đã gửi dữ liệu sang màn hình Customer!", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.btnLogout.setOnClickListener(v -> {
+            sharedViewModel.setUserRole(null); // Xóa role
+            androidx.navigation.Navigation.findNavController(v).navigate(com.example.fragment.R.id.navigation_login);
         });
 
     }
