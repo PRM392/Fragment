@@ -1,6 +1,20 @@
 <resources>
-    <string name="app_name">fragment</string>
+    <string name="app_name">TourApp</string>
+
+    <!-- Customer tabs -->
     <string name="title_home">Home</string>
+    <string name="title_booking">Booking</string>
+    <string name="title_tracking">Tracking</string>
+    <string name="title_sos">SOS</string>
+
+    <!-- Admin tabs -->
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_tour_management">Quản lý Tour</string>
+    <string name="title_user_management">Quản lý User</string>
+
+    <!-- Legacy -->
     <string name="title_notifications">Notifications</string>
+
+    <!-- Login -->
+    <string name="title_login">Đăng nhập</string>
 </resources>

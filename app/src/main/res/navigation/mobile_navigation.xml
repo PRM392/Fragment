@@ -3,15 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home"
+    app:startDestination="@+id/navigation_login"
     tools:context=".MainActivity">
 
+    <!-- ==================== LOGIN ==================== -->
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.fragment.ui.customer.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_login"
+        android:name="com.example.fragment.ui.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login">
 
+        <action
+            android:id="@+id/action_login_to_admin"
+            app:destination="@+id/navigation_dashboard"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_login_to_customer"
+            app:destination="@+id/navigation_home"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- ==================== ADMIN ==================== -->
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.fragment.ui.admin.dashboard.DashboardFragment"
@@ -19,9 +34,40 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_tour_management"
+        android:name="com.example.fragment.ui.admin.tour_management.TourManagementFragment"
+        android:label="@string/title_tour_management"
+        tools:layout="@layout/fragment_tour_management" />
+
+    <fragment
+        android:id="@+id/navigation_user_management"
+        android:name="com.example.fragment.ui.admin.user_management.UserManagementFragment"
+        android:label="@string/title_user_management"
+        tools:layout="@layout/fragment_user_management" />
+
+    <!-- ==================== CUSTOMER ==================== -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.fragment.ui.customer.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_booking"
+        android:name="com.example.fragment.ui.customer.booking.BookingFragment"
+        android:label="@string/title_booking"
+        tools:layout="@layout/fragment_booking" />
+
+    <fragment
+        android:id="@+id/navigation_tracking"
+        android:name="com.example.fragment.ui.customer.tracking.TrackingFragment"
+        android:label="@string/title_tracking"
+        tools:layout="@layout/fragment_tracking" />
+
+    <fragment
+        android:id="@+id/navigation_sos"
         android:name="com.example.fragment.ui.customer.sos.SosFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_sos"
         tools:layout="@layout/fragment_sos" />
 
 </navigation>
