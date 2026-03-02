@@ -17,13 +17,13 @@
         android:layout_marginBottom="40dp"/>
 
     <TextView
+        android:id="@+id/text_dashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhấn nút bên dưới để test SharedViewModel"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:layout_marginBottom="20dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSend"
         android:layout_width="match_parent"
         android:layout_height="60dp"

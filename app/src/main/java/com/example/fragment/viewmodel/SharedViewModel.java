@@ -1,4 +1,4 @@
-package com.example.fragment.ui;
+package com.example.fragment.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
