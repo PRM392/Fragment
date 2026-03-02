@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.fragment.databinding.ActivityMainBinding;
-import com.example.fragment.ui.SharedViewModel;
+import com.example.fragment.ui.viewmodel.SharedViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

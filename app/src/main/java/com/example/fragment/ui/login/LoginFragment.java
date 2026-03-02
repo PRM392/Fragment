@@ -15,7 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.fragment.R;
 import com.example.fragment.databinding.FragmentLoginBinding;
-import com.example.fragment.ui.SharedViewModel;
+import com.example.fragment.ui.viewmodel.SharedViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginFragment extends Fragment {

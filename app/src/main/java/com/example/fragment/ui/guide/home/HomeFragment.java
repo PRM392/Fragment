@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.fragment.databinding.FragmentGuideHomeBinding;
-import com.example.fragment.ui.SharedViewModel;
+import com.example.fragment.ui.viewmodel.SharedViewModel;
 
 public class HomeFragment extends Fragment {
 
@@ -25,8 +26,21 @@ public class HomeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         binding = FragmentGuideHomeBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+        sharedViewModel.getCounter().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.tvCounterResult.setText(String.valueOf(integer));
+            }
+        });
+
         return binding.getRoot();
     }
 
